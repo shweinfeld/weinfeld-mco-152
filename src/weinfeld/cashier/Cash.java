@@ -11,4 +11,8 @@ public class Cash {
     protected int tenDollars;
     protected int twentyDollars;
 
+    public int getTotalMoneyPieces() {
+        return pennies + nickels + dimes + quarters + oneDollars + fiveDollars + tenDollars + twentyDollars;
+    }
+
 }

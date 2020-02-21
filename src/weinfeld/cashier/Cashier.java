@@ -7,8 +7,10 @@ public class Cashier {
         this.register = register;
     }
 
-    public Cash pay(double price, Cash payment) {
+    public Cash pay(double price, Cash payment) throws NotEnoughChangeException, NotEnoughPaymentException {
+
         Cash change = new Cash();
+
         double money = 0.00;
         money += (payment.pennies * .01);
         money += (payment.nickels * .05);
@@ -20,6 +22,15 @@ public class Cashier {
         money += (payment.twentyDollars * 20);
 
         double returnMoney = Math.round((money - price)*100.0)/100.0;
+
+        if (price > money) {
+            throw new NotEnoughPaymentException();
+        }
+
+        if (register.getTotalMoneyPieces() == 0) {
+            throw new NotEnoughChangeException();
+        }
+
 
         if (returnMoney >= 20.00) {
             int numTwentyDollars = (int) (returnMoney / 20);
@@ -138,7 +149,15 @@ public class Cashier {
         }
 
         if (Math.round(returnMoney*100.0)/100.0 != 0) {
-            System.out.printf("No exact change. You will receive %.2f dollars worth of store credit\n", returnMoney);
+            register.pennies += change.pennies;
+            register.nickels += change.nickels;
+            register.dimes += change.dimes;
+            register.quarters += change.quarters;
+            register.oneDollars += change.oneDollars;
+            register.fiveDollars += change.fiveDollars;
+            register.tenDollars += change.tenDollars;
+            register.twentyDollars += change.twentyDollars;
+            throw new NotEnoughChangeException();
         }
 
         register.pennies += payment.pennies;

@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class CashierTest {
 
     @Test
-    public void pay() {
+    public void pay() throws NotEnoughChangeException, NotEnoughPaymentException {
 
         //given
         Cash register = new Cash();
@@ -28,6 +28,42 @@ public class CashierTest {
         assertEquals(98, register.quarters);
         assertEquals(99, register.pennies);
         assertEquals(3, register.oneDollars);
+
+    }
+
+    @Test (expected = NotEnoughChangeException.class)
+    public void brokeCashier() throws NotEnoughChangeException, NotEnoughPaymentException {
+
+        //given
+        Cash register = new Cash();
+        Cashier cashier = new Cashier(register);
+        double price = 2.49;
+        Cash payment = new Cash();
+        payment.oneDollars = 3;
+
+        //when
+        Cash change = cashier.pay(price, payment);
+
+        //then
+
+    }
+
+    @Test (expected = NotEnoughChangeException.class)
+    public void notEnoughChange() throws NotEnoughChangeException, NotEnoughPaymentException {
+
+        //given
+        Cash register = new Cash();
+        register.oneDollars = 1;
+        register.quarters = 10;
+        Cashier cashier = new Cashier(register);
+        double price = 2.49;
+        Cash payment = new Cash();
+        payment.oneDollars = 3;
+
+        //when
+        Cash change = cashier.pay(price, payment);
+
+        //then
 
     }
 }
