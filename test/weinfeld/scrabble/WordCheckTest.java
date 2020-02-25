@@ -13,7 +13,7 @@ public class WordCheckTest {
     public void existingWord() throws FileNotFoundException {
 
         //given
-        WordCheck word = new WordCheck();
+        WordCheck word = new WordCheck("C:\\Users\\shana\\Downloads\\dictionary.txt");
 
         //when
         boolean isWord = word.isWord("SOVIETIZING");
@@ -27,7 +27,7 @@ public class WordCheckTest {
     public void notAWord() throws FileNotFoundException {
 
         //given
-        WordCheck word = new WordCheck();
+        WordCheck word = new WordCheck("C:\\Users\\shana\\Downloads\\dictionary.txt");
 
         //when
         boolean isWord = word.isWord("FANTABULOUSLY");
@@ -40,7 +40,7 @@ public class WordCheckTest {
     public void caseTest() throws FileNotFoundException {
 
         //given
-        WordCheck word = new WordCheck();
+        WordCheck word = new WordCheck("C:\\Users\\shana\\Downloads\\dictionary.txt");
 
         //when
         boolean isWord = word.isWord("wOnDeR");

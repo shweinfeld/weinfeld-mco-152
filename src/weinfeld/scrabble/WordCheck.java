@@ -10,8 +10,8 @@ public class WordCheck {
     private Map<String, String> dictionary = new HashMap<>();
 
 
-    public WordCheck() throws FileNotFoundException {
-        File scrabbleDictionary = new File("C:\\Users\\shana\\Downloads\\dictionary.txt");
+    public WordCheck(String filePath) throws FileNotFoundException {
+        File scrabbleDictionary = new File(filePath);
         Scanner scanner = new Scanner(scrabbleDictionary);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
