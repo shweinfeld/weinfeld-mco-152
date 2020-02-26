@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 
 public class WordCheckTest {
@@ -19,7 +19,7 @@ public class WordCheckTest {
         boolean isWord = word.isWord("SOVIETIZING");
 
         //then
-        assertEquals(true, isWord);
+        assertTrue(isWord);
 
     }
 
@@ -33,7 +33,7 @@ public class WordCheckTest {
         boolean isWord = word.isWord("FANTABULOUSLY");
 
         //then
-        assertEquals(false, isWord);
+        assertFalse(isWord);
     }
 
     @Test
@@ -46,6 +46,6 @@ public class WordCheckTest {
         boolean isWord = word.isWord("wOnDeR");
 
         //then
-        assertEquals(true, isWord);
+        assertTrue(isWord);
     }
 }
