@@ -27,10 +27,6 @@ public class Cashier {
             throw new NotEnoughPaymentException();
         }
 
-        if (register.getTotalMoneyPieces() == 0) {
-            throw new NotEnoughChangeException();
-        }
-
 
         if (returnMoney >= 20.00) {
             int numTwentyDollars = (int) (returnMoney / 20);
