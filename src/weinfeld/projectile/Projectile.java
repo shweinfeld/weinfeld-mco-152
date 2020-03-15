@@ -29,6 +29,6 @@ public class Projectile {
 
     @Override
     public String toString() {
-        return time + " : (" + String.format("%.4f", getX()) + "," + String.format("%.4f", getY()) + ")";
+        return time + " : (" + String.format("%.4f", getX()) + ", " + String.format("%.4f", getY()) + ")";
     }
 }
