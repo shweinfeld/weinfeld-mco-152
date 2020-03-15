@@ -11,15 +11,7 @@ public class Cashier {
 
         Cash change = new Cash();
 
-        double money = 0.00;
-        money += (payment.pennies * .01);
-        money += (payment.nickels * .05);
-        money += (payment.dimes * .10);
-        money += (payment.quarters * .25);
-        money += payment.oneDollars;
-        money += (payment.fiveDollars * 5);
-        money += (payment.tenDollars * 10);
-        money += (payment.twentyDollars * 20);
+        double money = payment.getTotalMoney();
 
         double returnMoney = Math.round((money - price)*100.0)/100.0;
 
@@ -34,10 +26,12 @@ public class Cashier {
                 change.twentyDollars += numTwentyDollars;
                 register.twentyDollars -= numTwentyDollars;
                 returnMoney -= (numTwentyDollars * 20);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
             }
             else {
                 change.twentyDollars += register.twentyDollars;
                 returnMoney -= (register.twentyDollars * 20);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
                 register.twentyDollars = 0;
 
             }
@@ -50,10 +44,12 @@ public class Cashier {
                 change.tenDollars += numTenDollars;
                 register.tenDollars -= numTenDollars;
                 returnMoney -= (numTenDollars * 10);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
             }
             else {
                 change.tenDollars += register.tenDollars;
                 returnMoney -= (register.tenDollars * 10);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
                 register.tenDollars = 0;
             }
 
@@ -64,10 +60,12 @@ public class Cashier {
                 change.fiveDollars += numFiveDollars;
                 register.fiveDollars -= numFiveDollars;
                 returnMoney -= (numFiveDollars * 5);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
             }
             else {
                 change.fiveDollars += register.fiveDollars;
                 returnMoney -= (register.fiveDollars * 5);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
                 register.fiveDollars = 0;
             }
 
@@ -78,10 +76,12 @@ public class Cashier {
                 change.oneDollars += numOneDollar;
                 register.oneDollars -= numOneDollar;
                 returnMoney -= numOneDollar;
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
             }
             else {
                 change.oneDollars += register.oneDollars;
                 returnMoney -= register.oneDollars;
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
                 register.oneDollars = 0;
             }
 
@@ -92,10 +92,12 @@ public class Cashier {
                 change.quarters += numQuarters;
                 register.quarters -= numQuarters;
                 returnMoney -= (numQuarters * .25);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
             }
             else{
                 change.quarters += register.quarters;
                 returnMoney -= (register.quarters *.25);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
                 register.quarters = 0;
             }
 
@@ -107,10 +109,12 @@ public class Cashier {
                 change.dimes += numDimes;
                 register.dimes -= numDimes;
                 returnMoney -= (numDimes * .10);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
             }
             else {
                 change.dimes += register.dimes;
                 returnMoney -= (register.dimes * .10);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
                 register.dimes = 0;
             }
 
@@ -121,10 +125,12 @@ public class Cashier {
                 change.nickels += numNickels;
                 register.nickels -= numNickels;
                 returnMoney -= (numNickels * .05);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
             }
             else {
                 change.nickels += register.nickels;
                 returnMoney -= (register.nickels * .05);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
                 register.nickels = 0;
             }
 
@@ -136,10 +142,12 @@ public class Cashier {
                 change.pennies += numPennies;
                 register.pennies -= numPennies;
                 returnMoney -= (numPennies * .01);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
             }
             else {
                 change.pennies += register.pennies;
                 returnMoney -= (register.pennies * .01);
+                returnMoney = Math.round((returnMoney)*100.0)/100.0;
                 register.pennies = 0;
             }
         }
@@ -163,6 +171,7 @@ public class Cashier {
         register.oneDollars += payment.oneDollars;
         register.fiveDollars += payment.fiveDollars;
         register.tenDollars += payment.tenDollars;
+        register.twentyDollars += payment.twentyDollars;
 
         return change;
 
