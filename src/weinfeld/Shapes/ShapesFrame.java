@@ -14,7 +14,7 @@ public class ShapesFrame extends JFrame {
 
     public ShapesFrame() {
 
-        setSize(300, 400);
+        setSize(800, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle( "SHAPES");
 
@@ -29,6 +29,7 @@ public class ShapesFrame extends JFrame {
         lightButton.addActionListener(actionEvent -> shapesComponent.setShapeLightBulb());
         smileButton = new JButton("Smiley");
         smileButton.addActionListener(actionEvent -> shapesComponent.setShapeSmile());
+        //ImageIcon penguinImage = new ImageIcon("penguin-110-1109469.png");
         penguinButton = new JButton("Penguin");
         penguinButton.addActionListener(actionEvent -> shapesComponent.setShapePenguin());
         leftPanel.add(cupcakeButton);

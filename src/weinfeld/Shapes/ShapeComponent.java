@@ -5,7 +5,26 @@ import java.awt.*;
 
 public class ShapeComponent extends JComponent {
 
-    private String shape = "";
+    private String shape = "Star";
+    private int x = 0;
+    private int rotation = 0;
+    public ShapeComponent() {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                while (true) {
+                    repaint();
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        thread.start();
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -15,6 +34,8 @@ public class ShapeComponent extends JComponent {
         int centerX = width/2;
         int centerY = height/2;
         g.translate(centerX, centerY);
+        ((Graphics2D)g).rotate(Math.toRadians(rotation));
+        rotation++;
 
 
         switch (shape) {
@@ -29,6 +50,9 @@ public class ShapeComponent extends JComponent {
                 break;
             case "Cupcake":
                 drawCupcake(g);
+                break;
+            case "Star":
+                drawFourPointedStar(g);
                 break;
             default:
                 ;
